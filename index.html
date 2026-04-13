@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Creative Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #60a5fa 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 3s linear infinite; }
+        .bg-gradient-tech { background: radial-gradient(circle at top right, #1e293b, #0f172a); }
+        .service-card.active { border-color: rgba(59, 130, 246, 0.5); background: rgba(59, 130, 246, 0.05); }
+        
+        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.15; } }
+        
+        @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .animate-scroll-right { display: flex; width: max-content; animation: scrollRight 40s linear infinite; }
+        .reveal { opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .bg-animate { animation: float 10s ease-in-out infinite; }
+
+        .btn-glow:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.6); transform: translateY(-2px); }
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent); transition: all 0.6s; }
+        .btn-shine:hover::before { left: 100%; }
+    </style>
+</head>
+<body class="bg-[#0f172a] text-slate-200 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <i data-lucide="cpu" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">AI Creative <span class="text-blue-500">Studio</span></span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-blue-400 transition">Beranda</a>
+                <a href="#services" class="hover:text-blue-400 transition">Layanan</a>
+                <a href="#about" class="hover:text-blue-400 transition">Tentang Kami</a>
+                <a href="#contact" class="btn-glow btn-shine px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-lg shadow-blue-500/20">Mulai Proyek</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-toggle" class="md:hidden text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0f172a] border-t border-slate-800 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-slate-300 hover:text-blue-400 transition font-medium">Beranda</a>
+            <a href="#services" class="block text-slate-300 hover:text-blue-400 transition font-medium">Layanan</a>
+            <a href="#about" class="block text-slate-300 hover:text-blue-400 transition font-medium">Tentang Kami</a>
+            <a href="#contact" class="block w-full py-3 bg-blue-600 text-white rounded-xl text-center font-bold">Mulai Proyek</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.2),transparent_50%)] bg-animate"></div>
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="reveal inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 mb-6" style="animation-delay: 100ms;">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-400">Generasi Baru Agensi Kreatif</span>
+                </div>
+                <h1 class="reveal text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight" style="animation-delay: 300ms;">
+                    AI Creative <span class="text-gradient">Studio</span>
+                </h1>
+                <p class="reveal text-lg text-slate-400 mb-10 leading-relaxed" style="animation-delay: 500ms;">
+                    Kami menggabungkan intuisi artistik manusia dengan kekuatan AI untuk menciptakan konten visual, strategi digital, dan solusi desain yang belum pernah terbayangkan sebelumnya.
+                </p>
+                <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4" style="animation-delay: 700ms;">
+                    <button class="btn-glow btn-shine w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group">
+                        Eksplorasi Layanan <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+                    </button>
+                    <button class="btn-glow w-full sm:w-auto px-8 py-4 glass hover:bg-white/10 text-white font-semibold rounded-xl transition-all duration-300">
+                        Lihat Portofolio
+                    </button>
+                </div>
+
+                <!-- Infinite Slider Section -->
+                <div class="reveal mt-20 overflow-hidden relative" style="animation-delay: 900ms;">
+                    <div class="animate-scroll-right hover:[animation-play-state:paused] cursor-pointer">
+                        <!-- First set of items -->
+                        <div class="flex gap-6 pr-6">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 1">
+                            <video src="https://cdn.pixabay.com/video/2023/10/20/185791-876352358_tiny.mp4" autoplay muted loop class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl"></video>
+                            <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 2">
+                            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 3">
+                        </div>
+                        <!-- Duplicate set for seamless looping -->
+                        <div class="flex gap-6 pr-6">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 1">
+                            <video src="https://cdn.pixabay.com/video/2023/10/20/185791-876352358_tiny.mp4" autoplay muted loop class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl"></video>
+                            <img src="https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 2">
+                            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=400" class="w-72 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-2xl" alt="AI Work 3">
+                        </div>
+                    </div>
+                    <!-- Fading edges effect -->
+                    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0f172a] to-transparent z-10 pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features/Services -->
+    <section id="services" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Layanan Cerdas Kami</h2>
+                <p class="text-slate-400">Solusi kreatif terintegrasi dengan teknologi AI terkini.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1: AI Visual -->
+                <div onclick="showPricing('visual')" class="service-card p-8 rounded-2xl glass hover:border-blue-500/50 transition cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-500">
+                        <i data-lucide="image" class="text-blue-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">AI Visual Generation</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">Pembuatan aset visual unik dan fotorealistik menggunakan model AI kustom untuk kebutuhan anda</p>
+                </div>
+
+                <!-- Service 2: Video -->
+                <div onclick="showPricing('video')" class="service-card p-8 rounded-2xl glass hover:border-blue-500/50 transition cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-500">
+                        <i data-lucide="video" class="text-blue-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Smart Video Editing</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">Produksi konten video dinamis dengan optimasi algoritma untuk meningkatkan engagement audiens.</p>
+                </div>
+
+                <!-- Service 3: Automation -->
+                <div onclick="showPricing('automation')" class="service-card p-8 rounded-2xl glass hover:border-blue-500/50 transition cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-500">
+                        <i data-lucide="zap" class="text-blue-400 group-hover:text-white transition"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">AI Automation</h3>
+                    <p class="text-slate-400 leading-relaxed text-sm">Narasi brand yang persuasif dan strategi konten yang didukung oleh analisis data AI yang mendalam.</p>
+                </div>
+            </div>
+
+            <!-- Pricing Display Area -->
+            <div id="pricing-section" class="mt-16 hidden opacity-0 transition-all duration-700 transform translate-y-4">
+                <div class="glass p-8 md:p-12 rounded-[2.5rem] border border-blue-500/20">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+                        <div>
+                            <h4 id="pricing-title" class="text-3xl font-bold text-white">Daftar Harga</h4>
+                            <p class="text-blue-400 mt-2">Pilih paket yang sesuai dengan skala bisnis Anda</p>
+                        </div>
+                        <span class="text-xs font-mono text-slate-500 uppercase tracking-widest">Pricing Table v1.0</span>
+                    </div>
+                    <div id="pricing-cards" class="grid md:grid-cols-3 gap-6">
+                        <!-- Cards generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -top-10 -left-10 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl"></div>
+                    <div class="relative rounded-3xl overflow-hidden border border-slate-700">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800" alt="AI Technology" class="w-full object-cover aspect-video lg:aspect-square opacity-80 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent"></div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">About</h2>
+                    <p class="text-slate-400 mb-6 leading-relaxed text-lg">
+                        AI Creative Studio bukan sekadar agensi desain biasa. Kami adalah laboratorium inovasi di mana teknologi AI tercanggih bertemu dengan tangan-tangan kreatif profesional.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="text-blue-500 w-6 h-6 shrink-0"></i>
+                            <span class="text-slate-300">Efisiensi produksi hingga 10x lebih cepat.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="text-blue-500 w-6 h-6 shrink-0"></i>
+                            <span class="text-slate-300">Personalisasi konten skala besar yang akurat.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="text-blue-500 w-6 h-6 shrink-0"></i>
+                            <span class="text-slate-300">Iterasi desain tanpa batas berdasarkan data performa.</span>
+                        </li>
+                    </ul>
+                    <button onclick="showTeam(this)" class="text-blue-400 font-semibold hover:text-blue-300 transition flex items-center gap-2 group">
+                        Kenali Tim Kami Lebih Dekat <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>
+                    </button>
+
+                    <!-- Team Members Section -->
+                    <div id="team-section" class="mt-10 hidden opacity-0 transition-all duration-700 transform translate-y-4">
+                        <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                            <div class="group">
+                                <div class="relative mb-3 rounded-2xl overflow-hidden aspect-square border border-slate-700 group-hover:border-blue-500/50 transition">
+                                    <img src="gambar/d.png" alt="CEO">
+                                </div>
+                                <h4 class="text-white font-bold text-sm">Muhammad Dani Maulana</h4>
+                                <p class="text-blue-400 text-xs uppercase tracking-wider">OWNER / FOUNDER</p>
+                            </div>
+                            <div class="group">
+                                <div class="relative mb-3 rounded-2xl overflow-hidden aspect-square border border-slate-700 group-hover:border-blue-500/50 transition">
+                                    <img src="gambar/h.jpeg" alt="AI Expert">
+                                </div>
+                                <h4 class="text-white font-bold text-sm">Muhammad Hafi</h4>
+                                <p class="text-blue-400 text-xs uppercase tracking-wider">CREATIVE</p>
+                            </div>
+                            <div class="group">
+                                <div class="relative mb-3 rounded-2xl overflow-hidden aspect-square border border-slate-700 group-hover:border-blue-500/50 transition">
+                                    <img src="gambar/n.jpg" alt="Creative" class="h-full w-full">
+                                </div>
+                                <h4 class="text-white font-bold text-sm">Naila Atresia Rahma</h4>
+                                <p class="text-blue-400 text-xs uppercase tracking-wider">ADMIN</p>
+                            </div>
+                            <div class="group">
+                                <div class="relative mb-3 rounded-2xl overflow-hidden aspect-square border border-slate-700 group-hover:border-blue-500/50 transition">
+                                    <img src="gambar/s.png" alt="Technical">
+                                </div>
+                                <h4 class="text-white font-bold text-sm">Salma Nur Lathifah</h4>
+                                <p class="text-blue-400 text-xs uppercase tracking-wider">CONTENT EDITOR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="relative rounded-[3rem] p-12 lg:p-20 overflow-hidden text-center bg-blue-600">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl lg:text-5xl font-bold text-white mb-8 leading-tight">Siap Memulai Revolusi Digital Anda?</h2>
+                    <p class="text-blue-100 mb-10 text-lg max-w-2xl mx-auto">
+                        Bergabunglah dengan ratusan brand yang telah bertransformasi menggunakan kekuatan AI Creative Studio.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:hello@aicreative.studio" class="btn-shine px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-slate-100 transition-all duration-300 shadow-xl">
+                            Konsultasi Gratis
+                        </a>
+                        <a href="#" class="btn-glow btn-shine px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition-all duration-300">
+                            Lihat Harga
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                    <i data-lucide="cpu" class="text-white w-4 h-4"></i>
+                </div>
+                <span class="text-lg font-bold text-white">AI Creative Studio</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                &copy; 2023 AI Creative Studio. Seluruh hak cipta dilindungi.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-slate-400 hover:text-blue-400 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-400 hover:text-blue-400 transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-400 hover:text-blue-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileToggle.innerHTML = isHidden 
+                ? '<i data-lucide="menu" class="w-6 h-6"></i>' 
+                : '<i data-lucide="x" class="w-6 h-6"></i>';
+            lucide.createIcons();
+        });
+
+        // Close mobile menu when clicking links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        const pricingData = {
+            visual: {
+                title: "AI Visual Generation",
+                description: "Layanan pembuatan foto produk, branding , dan aset visual fotorealistik menggunakan teknologi Generative AI. Kami membantu Anda mendapatkan visual unik yang dirancang khusus untuk identitas brand Anda, tanpa perlu sesi foto konvensional yang mahal. Selain itu, kami dapat membantu anda dalam membuat poto pribadi atau poto keluarga",
+                minPrice: "Rp 50.000",
+                unit: "per gambar",
+                benefits: ["Aset Eksklusif & Unik", "Resolusi Tinggi (4K+)"]
+            },
+            video: {
+                title: "Smart Video Editing",
+                description: "Transformasi footage mentah menjadi konten video yang memukau. Kami menggunakan AI untuk transisi cerdas, subtitle otomatis yang presisi, dan peningkatan kualitas video (upscaling) untuk hasil akhir yang profesional dan cinematic.",
+                minPrice: "Rp 200.000",
+                unit: "per proyek",
+                benefits: ["4k Resolusi", "AI Voiceover Profesional"]
+            },
+            automation: {
+                title: "AI Automation",
+                description: "Otomatisasi alur kerja dan layanan pelanggan menggunakan chatbot berbasis AI. Solusi ini membantu bisnis Anda beroperasi 24/7, merespon pelanggan secara instan, dan menghemat biaya operasional hingga 60%.",
+                minPrice: "Rp 1.000.000",
+                unit: "implementasi awal",
+                benefits: ["Integrasi API Multi-platform", "Skalabilitas Tanpa Batas"]
+            }
+        };
+
+        function showPricing(serviceKey) {
+            const section = document.getElementById('pricing-section');
+            const title = document.getElementById('pricing-title');
+            const container = document.getElementById('pricing-cards');
+            const cards = document.querySelectorAll('.service-card');
+
+            // Highlight active card
+            cards.forEach(card => card.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const data = pricingData[serviceKey];
+            title.innerText = `Detail Layanan: ${data.title}`;
+            
+            container.className = "col-span-full"; // Reset grid for details
+            container.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-12 items-center p-4 md:p-8">
+                    <div class="space-y-6">
+                        <p class="text-slate-300 text-lg leading-relaxed">${data.description}</p>
+                        <div class="flex flex-wrap gap-4">
+                            ${data.benefits.map(b => `<span class="flex items-center gap-2 text-sm text-blue-400 bg-blue-500/5 px-3 py-1 rounded-full border border-blue-500/10"><i data-lucide="check-circle" class="w-4 h-4"></i> ${b}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="bg-white/5 rounded-3xl p-8 border border-white/10 text-center">
+                        <p class="text-slate-400 uppercase tracking-widest text-xs mb-2">Estimasi Investasi</p>
+                        <div class="text-slate-500 text-sm italic mb-1">Harga mulai dari</div>
+                        <div class="text-4xl lg:text-5xl font-bold text-white mb-2">${data.minPrice}</div>
+                        <p class="text-slate-500 text-sm mb-8">${data.unit}</p>
+                        <a href="#contact" class="btn-glow btn-shine inline-block w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all duration-300 text-center">Konsultasi Gratis Sekarang</a>
+                    </div>
+                </div>
+            `;
+
+            // Show section with animation
+            section.classList.remove('hidden');
+            setTimeout(() => {
+                section.classList.remove('opacity-0', 'translate-y-4');
+                lucide.createIcons(); // Re-init icons for new cards
+            }, 50);
+            
+            section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function showTeam(btn) {
+            const teamSection = document.getElementById('team-section');
+            const isHidden = teamSection.classList.contains('hidden');
+
+            if (isHidden) {
+                teamSection.classList.remove('hidden');
+                setTimeout(() => {
+                    teamSection.classList.remove('opacity-0', 'translate-y-4');
+                }, 50);
+                btn.innerHTML = `Tutup Info Tim <i data-lucide="chevron-up" class="w-4 h-4"></i>`;
+            } else {
+                teamSection.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => teamSection.classList.add('hidden'), 700);
+                btn.innerHTML = `Kenali Tim Kami Lebih Dekat <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition"></i>`;
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
